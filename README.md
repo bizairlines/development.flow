@@ -30,14 +30,14 @@ At the mostly cases it'll be the most recent branch. It can be used for:
 1. Fast developments and codes with low impact to the project, and;
 2. To QA a sprint before it's launch.
 
-For example, if you're changing messages in a `i18n` file, it's not necessary to create a `feature/*` branch for it.
+For example, if you're changing messages in a `i18n` file then it's not necessary to create a `feature/*` branch for it.
 
-*Note*: After QA'ing other branches thouroughly they mush be merged to `develop`.
+*Note*: The merge to `develop` are allowed only after a thouroughly QA.
 
 ### Hotfix
-This branch should be used in situations to fix critical bugs.
+This branch should be used in situations of critical bugs.
 
-Let's say, for example, that version 1.2.0 of an application is having some issues due a severe bug, but you're working on a different branch and it's not stable yet, so you **MUST** do the fix in `hotfix`. 
+Let's say, for example, that version 1.2.0 of an application has a severe bug, but you're working on a different branch and it's not stable yet, so you **MUST** do the fix in `hotfix` and then merge back to `master`. 
 
 To do this, you must checkout to `hotfix` branch, pull the latest updates from `master` and start fixing the problem:
 ```
@@ -45,7 +45,7 @@ $ git checkout -b hotfix
 Switched to a new branch "hotfix"
 $ git pull origin master
 ```
-After done the fixes, commit to `hotfix` branch:
+When the fixes are done, commit to `hotfix` branch:
 ```
 $ git commit -a -m "Bumped version number to 1.2.1"
 [hotfix 41e61bb] Bumped version number to 1.2.1
