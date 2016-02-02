@@ -81,5 +81,14 @@ $ git push origin feature/5532-redis-integration
 ### Release
 `@todo`
 
+### Tags
+After every successfull deploy the project **MUST** be tagged.
+
+```sh
+$ git checkout master
+$ git tag -a v1.2.1 -m 'Some comment is necessary'
+$ git push origin v1.2.1
+```
+
 ## Author
 [Hudson Dunice](https://github.com/dunice)
