@@ -8,9 +8,9 @@ When versioning projects you should consider the following practice:
 http://semver.org/
 
 ## Git Flow
-Originally based on [Atlassian GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+Originally based on [Atlassian GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) and [Vicent Driessen](https://github.com/nvie).
 
-The following branches must be created for every projects available:
+The following branches must be created for every available projects and also for new projects:
 * master
 * hotfix
 * develop
@@ -20,16 +20,26 @@ The following branches must be created for every projects available:
 ### Master
 This branch is **BLOCKED** and only users with *admin* permission are allowed to commit and push to it. 
 
-After QA'ing thouroughly the branches/features mush be merged with it.
+*Note 1*: There're only 2 branches that are allowed to merge to `master`: `develop` and `hotfix`. All of the others **MUST** merge to `develop`, QA it thorougly and then merge `develop` to `master`.
 
-*Note*: The deployement to production must be done from this branch.
+*Note 2*: The deployement to production must be done from this branch.
+
+### Develop
+At the mostly cases it'll be the most recent branch. It can be used for:
+
+1. Fast developments and codes with low impact to the project, and;
+2. To QA a sprint before it's launch.
+
+For example, if you're changing messages in a `i18n` file, it's not necessary to create a `feature/*` branch for it.
+
+*Note*: After QA'ing other branches thouroughly they mush be merged to `develop`.
 
 ### Hotfix
-This branch should be used in cases to fix critical bugs. `hotfix` branches are created from the `master` branch. 
+This branch should be used in situations to fix critical bugs.
 
-Let's say, for example, that version 1.2.0 is the current version of the application running live and it's causing troubles due to a severe bug, but you're working on a branch and it's not stable. 
+Let's say, for example, that version 1.2.0 of an application is having some issues due a severe bug, but you're working on a different branch and it's not stable yet, so you **MUST** do the fix in `hotfix`. 
 
-We must checkout to `hotfix` branch, pull the latest modifications from `master` and start fixing the problem:
+To do this, you must checkout to `hotfix` branch, pull the latest updates from `master` and start fixing the problem:
 ```
 $ git checkout -b hotfix
 Switched to a new branch "hotfix"
@@ -41,17 +51,10 @@ $ git commit -a -m "Bumped version number to 1.2.1"
 [hotfix 41e61bb] Bumped version number to 1.2.1
 1 files changed, 1 insertions(+), 1 deletions(-)
 ```
-After the commit it's time to push the work to the remote server:
+Now it's time to push the work to the remote server:
 ```
 $ git push origin hotfix
 ```
-
-**DO NOT** checkout to this branch from different branch then `master`.
-
-### Develop
-At the mostly cases this would be the most recent branch. This branch can be used for fast developments and codes and with low impact in the project.
-
-For example, if you're changing messages in a `i18n` file, it's not necessary to create a `feature/*` branch for it.
 
 ### Feature
 New features must be done in this branch.
@@ -77,3 +80,6 @@ $ git push origin feature/5532-redis-integration
 
 ### Release
 `@todo`
+
+## Author
+[Hudson Dunice](https://github.com/dunice)
