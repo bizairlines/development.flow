@@ -61,7 +61,7 @@ New features must be done in this branch.
 
 For example, if you're creating a new code to handle user's sessions, you should do this here.
 
-This branch **MUST** use the following pattern: `feature/{id}-name-of-the-feature`, where `id` is the number of the card at [Jira](https://bizairlines.atlassian.net/) or an another project/issue tracker.
+This branch **MUST** use the following pattern: `feature/{id}-name-of-the-feature`, where `id` is the number of the card at [Jira](https://bizairlines.atlassian.net/) or another project/issue tracker.
 
 ```
 $ git checkout -b feature/5532-redis-integration develop
